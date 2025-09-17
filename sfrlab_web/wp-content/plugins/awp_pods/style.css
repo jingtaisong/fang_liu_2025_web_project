@@ -1,0 +1,10 @@
+/*
+
+*/
+
+/* CSS for papers pods */
+	.post_image {border: 1px solid; padding: 10px; margin: 10 20 20 20px;}
+	.left_col { float:left; width: 30%; padding-top: 10px;}
+	.right_col { float:right; width: 70%; padding-left: 10px; }
+	.pub_abstract {padding: 10px 0px; font-style: italic;}
+	.year_links {padding-bottom: 20px;}

@@ -1,0 +1,65 @@
+<div class='container_wrap footer_color' id='footer'>
+
+        <div class='container'>
+
+            <div class='flex_column av_one_third  first el_before_av_one_third'>
+                <section id="text-2" class="widget clearfix widget_text">
+                    <div class="textwidget">
+                        <p><img decoding="async" class="alignnone size-medium wp-image-530" style=" height:100px; box-shadow: none;" title="UCI logo" src="<?=$we_gjzms7?>" alt="" /></p>
+                    </div>
+                    <span class="seperator extralight-border"></span></section>
+                	<section id="custom_html-6" class="widget_text widget clearfix widget_custom_html">
+                    <div class="textwidget custom-html-widget">
+                    <?php foreach ($footico as $footico01){?> 
+                    <a href="<?=$footico01['ftitle']?>" target="_blank" rel="noopener"><?=$footico01['title']?></a>
+                    <br><?php }?>
+                    </div><span class="seperator extralight-border"></span></section>
+            </div>
+            <div class='flex_column av_one_third  el_after_av_one_third el_before_av_one_third '>
+                <section id="custom_html-3" class="widget_text widget clearfix widget_custom_html">
+                    <h3 class="widgettitle"><?=ziduan_zhi(35,'title')?></h3>
+                    <div class="textwidget custom-html-widget"><?= str_replace("\r\n","<br />",ziduan_zhi(35,'writer'));?></div><span class="seperator extralight-border"></span></section>
+            </div>
+            <div class='flex_column av_one_third  el_after_av_one_third el_before_av_one_third '>
+                <section id="custom_html-7" class="widget_text widget clearfix widget_custom_html">
+                    <h3 class="widgettitle"><?=ziduan_zhi(36,'title')?></h3>
+                    <div class="textwidget custom-html-widget"><?=ziduan_zhi(36,'ftitle')?>
+                        <br> <?=ziduan_zhi(36,'ftitle1')?> 
+                        <?php if(ziduan_zhi(36,'ftitle2')){?><a href="mailto:<?=ziduan_zhi(36,'ftitle2')?>"><?=ziduan_zhi(36,'ftitle2')?></a><br><?php }?></div>
+                    <span class="seperator extralight-border"></span>
+                </section>
+                <section id="custom_html-9" class="widget_text widget clearfix widget_custom_html">
+                    <h3 class="widgettitle"><?=ziduan_zhi(37,'title')?></h3>
+                    <div class="textwidget custom-html-widget"><?=ziduan_zhi(37,'ftitle')?>
+                        <br> <?=ziduan_zhi(37,'ftitle1')?> 
+                        <?php if(ziduan_zhi(37,'ftitle2')){?><a href="mailto:<?=ziduan_zhi(37,'ftitle2')?>"><?=ziduan_zhi(37,'ftitle2')?></a><br><?php }?>
+                    </div><span class="seperator extralight-border"></span></section>
+            </div>
+        </div>
+
+    </div>
+
+<footer class='container_wrap socket_color' id='socket' role="contentinfo" itemscope="itemscope" itemtype="WPFooter">
+        <div class='container'>
+
+            <span class='copyright'><?=$we_gjzms?></span>
+
+           
+            <nav class='sub_menu_socket' role="navigation" itemscope="itemscope" itemtype="SiteNavigationElement">
+                <div class="avia3-menu">
+                    <ul role="menu" class="menu" id="avia3-menu">
+                        <li role="menuitem" id="menu-item-2182" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-2 current_page_item menu-item-top-level menu-item-top-level-1"><a href="index.php" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text"><?=ziduan_zhi(1,'title')?></span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
+                        <li role="menuitem" id="menu-item-2183" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-2"><a href="research.php" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text"><?=ziduan_zhi(2,'title')?></span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
+                        <li role="menuitem" id="menu-item-2184" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-3"><a href="team.php" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text"><?=ziduan_zhi(3,'title')?></span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
+                        <li role="menuitem" id="menu-item-2185" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-4"><a href="publications.php" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text"><?=ziduan_zhi(4,'title')?></span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
+                        <li role="menuitem" id="menu-item-2186" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-5"><a href="news.php" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text"><?=ziduan_zhi(5,'title')?></span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
+                        <li role="menuitem" id="menu-item-2187" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-6"><a href="facilities.php/" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text"><?=ziduan_zhi(6,'title')?></span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
+                        <li role="menuitem" id="menu-item-2188" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-7"><a href="teaching.php" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text"><?=ziduan_zhi(7,'title')?></span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
+                        <li role="menuitem" id="menu-item-2189" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-top-level menu-item-top-level-8"><a href="contact.php" itemprop="url" tabindex="0"><span class="avia-bullet"></span><span class="avia-menu-text"><?=ziduan_zhi(8,'title')?></span><span class="avia-menu-fx"><span class="avia-arrow-wrap"><span class="avia-arrow"></span></span></span></a></li>
+                       
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+    </footer>

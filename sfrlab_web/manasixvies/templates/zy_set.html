@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+<head>
+<meta charset="UTF-8">
+<title>后台管理</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+<link rel="stylesheet" href="./css/font.css">
+<link rel="stylesheet" href="./css/xadmin.css">
+<script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript" src="./js/xadmin.js"></script>
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+  <script src="./js/html5.min.js"></script>
+  <script src="./js/respond.min.js"></script>
+<![endif]-->
+</head>
+<div class="layui-fluid" style="background-color:#FFF; padding-top:50px;">
+<div class="layui-row">
+<form class="layui-form" method="post" id="example" name="example" action="zy_set.php?act=admin_edit" enctype="multipart/form-data">
+
+
+<div class="layui-form-item">
+<label for="L_repass" class="layui-form-label">
+<span class="x-red">*</span>LOGO</label>
+<div class="layui-input-inline">
+<?php if($we_gjzmsw1){?><img src="../<?=$we_gjzmsw1?>" height="50"><br /><br /><?php }?>
+<input name="upfile1"  id="upfile1" type="file" class="layui-file" size="40" /><input name="old_upfilk" type="hidden" size="40" value="<?=$we_gjzmsw1?>" /></div>
+</div>
+
+<div class="layui-form-item" style="display:;">
+<label for="L_repass" class="layui-form-label">
+<span class="x-red">*</span>LOGO</label>
+<div class="layui-input-inline">
+<?php if($we_gjzms7){?><img src="../<?=$we_gjzms7?>" height="50"><br /><br /><?php }?>
+<input name="upfil4" type="file" size="40" value="<?=$we_gjzms7?>"/><input name="old_upfil4" type="hidden" size="40" value="<?=$we_gjzms7?>" /></div>
+</div>
+
+
+<div class="layui-form-item" style="display:none;">
+<label for="L_repass" class="layui-form-label">
+<span class="x-red">*</span></label>
+<div class="layui-input-inline">
+<?php if($we_gjzms3){?><img src="../<?=$we_gjzms3?>" height="50"><br /><br /><?php }?>
+<input name="upfil3" type="file" size="40" value="<?=$we_gjzms3?>"/><input name="old_upfil3" type="hidden" size="40" value="<?=$we_gjzms3?>" /></div>
+</div>
+<div class="layui-form-item" style="display:none;">
+<label for="L_pass" class="layui-form-label">
+<span class="x-red"></span></label>
+<div class="layui-input-inline">
+<input type="text" name="we_url" value="<?=$we_url?>"  lay-verify="link" autocomplete="off" class="layui-input"></div>
+</div>
+<div class="layui-form-item" style="display:none;">
+<label for="L_pass" class="layui-form-label">
+<span class="x-red"></span></label>
+<div class="layui-input-inline">
+<input type="text" name="we_gjzms9" value="<?=$we_gjzms9?>"  lay-verify="link" autocomplete="off" class="layui-input"></div>
+</div>
+<div class="layui-form-item" style="display:none;">
+<label for="L_pass" class="layui-form-label">
+<span class="x-red"></span></label>
+<div class="layui-input-inline">
+<input type="text" name="we_gjzms5" value="<?=$we_gjzms5?>" style="width:700px;"  lay-verify="link" autocomplete="off" class="layui-input"></div>
+</div>
+
+<div class="layui-form-item">
+<label for="L_pass" class="layui-form-label">
+<span class="x-red"></span>Copyright Text</label>
+<div class="layui-input-inline">
+<input type="text" name="we_gjzms" value="<?=$we_gjzms?>" style="width:700px;"   lay-verify="link" autocomplete="off" class="layui-input"></div>
+</div>
+
+
+<div class="layui-form-item">
+<label for="L_pass" class="layui-form-label">
+<span class="x-red">*</span>Site name</label>
+<div class="layui-input-inline">
+<input type="text" name="web_titlel" value="<?=$web_titlel?>" required="" style="width:700px;"  lay-verify="title" autocomplete="off" class="layui-input"></div>
+</div>
+<div class="layui-form-item">
+<label for="L_pass" class="layui-form-label">
+<span class="x-red">*</span>keyword</label>
+<div class="layui-input-inline">
+<input type="text" name="we_gjz" value="<?=$we_gjz?>" style="width:700px;"   class="layui-input"></div>
+</div>
+<div class="layui-form-item">
+<label for="L_pass" class="layui-form-label">
+<span class="x-red">*</span>Keyword description</label>
+<div class="layui-input-inline">
+<input type="text" name="we_gjzms2" value="<?=$we_gjzms2?>" style="width:700px;"  autocomplete="off" class="layui-input"></div>
+</div>
+<div class="layui-form-item"><input name="id" type="hidden" size="40" value="<?=$id?>" />
+<label for="L_username" class="layui-form-label">
+<span class="x-red">*</span>state</label>
+<div class="layui-input-inline">
+<select name="checkd" class="valid">
+<option value="1" <?php if($checkd==1){?> selected <?php }?> >Open</option>
+<option value="2" <?php if($checkd==2){?> selected <?php }?> >close</option>
+</select>
+</div>
+</div>
+
+<div class="layui-form-item">
+<label for="L_pass" class="layui-form-label">
+<span class="x-red"></span>Closing instructions</label>
+<div class="layui-input-inline">
+<input type="text" name="we_gjzms13" value="<?=$we_gjzms13?>"  class="layui-input"></div>
+</div>
+
+<div class="layui-form-item">
+<label for="L_repass" class="layui-form-label"></label>
+<button  class="layui-btn" lay-filter="add" lay-submit="">Submit</button></div>
+</form>
+</div>
+</div>
+<script>layui.use(['form', 'layer','jquery'],
+function() {
+$ = layui.jquery;
+var form = layui.form,
+layer = layui.layer;
+//自定义验证规则
+form.verify({
+title: function(value) {
+if (value.length < 1) {
+return '名称至少得有个字符啊';
+}}});
+form.on('submit(add)');});
+</script>
+</body>
+</html>

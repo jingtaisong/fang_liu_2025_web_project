@@ -1,0 +1,30 @@
+  <link rel="stylesheet" href="wp-content/swiper.min.css">
+  <style>
+    .swiper-container {width: 100%;height: 100%; }
+    .swiper-slide {text-align: center;font-size: 18px;display: -webkit-box;display: -ms-flexbox;display: -webkit-flex;display: flex;-webkit-box-pack: center;-ms-flex-pack: center;-webkit-justify-content: center;justify-content: center;-webkit-box-align: center;-ms-flex-align: center;-webkit-align-items: center;align-items: center;transition: 300ms; transform: scale(0.8); }
+	.swiper-slide-active,.swiper-slide-duplicate-active{transform: scale(1);}
+  </style>
+  <div class="swiper-container----">
+    <div class="swiper-wrapper------">
+    <?php foreach ($bico as $bico01){?> 
+    <div class="swiper-slid--e" ><img src="<?=str_replace("../", "",$bico01[litpic])?>" style="width:100%;"></div>
+    <?php }?>
+    </div>
+    <div class="swiper-pagination" style="display:none;"></div>
+  </div>
+  <script src="wp-content/swiper.min.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+	  centeredSlides: true,
+	  loop: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
