@@ -1,16 +1,16 @@
 
 
 
-程序环境：PHP7.3+MYSQL5.6
+Program environment: PHP7.3 + MYSQL5.6
 
-Include此文件夹里config_db.php 是数据库连接文件
-$sql_name   = "数据库名称";
-$db_user   = "数据库账号";
-$db_pass   = "数据库密码";
-此信息对应写好
+the config_db.php file in the directory of /Include is the database connection file.
+$sql_name   = "Database name";
+$db_user    = "Database username";
+$db_pass    = "Database password";
+Fill in this information accordingly.
 
-mysql.sql 这个是数据库文件，建立好数据库之后导入即可
+mysql.sql is the database file; after creating the database, simply import it.
 
-
-后台地址是：域名/manasixvies/
-初始账号admin密码admin888
+The admin panel address is: ${domain}/manasixvies/
+Default username: admin
+Default password: admin888
