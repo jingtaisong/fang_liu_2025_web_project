@@ -34,7 +34,7 @@
             <hr class="hr20" >
         </form>
     </div>
-    <!-- 底部结束 -->
+	<!-- End of footer -->
 </body>
 </html>
 <script>
@@ -46,25 +46,25 @@
 			draw(show_num);
 		})
 
-		//单击事件的时候校验输入的验证码是否正确
+		//Verify if the input verification code is correct when clicking
 		$(".layui-btn").on('click', function() {
 			
 			var val = $(".input-val").val().toLowerCase();
 			var num = show_num.join("");
 			if (val == '') {
-				alert('请输入验证码！');draw(show_num);
+				alert('Please enter verification code!');draw(show_num);
 			zy_form.userclick.focus(); return false; 
 			} else if (val == num) {
 				
 			if (zy_form.username.value == "") 
 			{ 
-			alert("请输入用户名"); 
+			alert("Please enter user name"); 
 			zy_form.username.focus(); 
 			return false; 
 			} 
 			if (zy_form.password.value == "") 
 			{ 
-			alert("请输入密码"); 
+			alert("Please enter password"); 
 			zy_form.password.focus(); 
 			return false; 
 			} 
@@ -72,7 +72,7 @@
 			
 			
 			} else {
-				alert('验证码错误！请重新输入！');
+				alert('Verification code error! Please re-enter!');
 				$(".input-val").val('');zy_form.userclick.focus(); 
 				draw(show_num);return false; 
 			}
@@ -83,26 +83,26 @@
 	})
 
 
-	function draw(show_num) { //显示区域内容信息
+	function draw(show_num) { //Display content in the area
 		var canvas_width = $('#canvas').width();
 		var canvas_height = $('#canvas').height();
-		var canvas = document.getElementById("canvas"); //获取到canvas的对象，演员
-		var context = canvas.getContext("2d"); //获取到canvas画图的环境，演员表演的舞台
+		var canvas = document.getElementById("canvas"); //Get canvas object, like an actor
+		var context = canvas.getContext("2d"); //Get canvas drawing context, like a stage
 		canvas.width = canvas_width;
 		canvas.height = canvas_height;
 		var sCode =
 			"a,b,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,E,F,G,H,J,K,L,M,N,P,Q,R,S,T,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0";
 		var aCode = sCode.split(",");
-		var aLength = aCode.length; //获取到数组的长度
+		var aLength = aCode.length; //Get array length
 
 		for (var i = 0; i <= 3; i++) {
-			var j = Math.floor(Math.random() * aLength); //获取到随机的索引值
-			var deg = Math.random() * 30 * Math.PI / 180; //产生0~30之间的随机弧度
-			var txt = aCode[j]; //得到随机的一个内容
+			var j = Math.floor(Math.random() * aLength); //Get random index value
+			var deg = Math.random() * 30 * Math.PI / 180; //Generate random radian between 0~30
+			var txt = aCode[j]; //Get random content
 			show_num[i] = txt.toLowerCase();
-			var x = 10 + i * 20; //文字在canvas上的x坐标
-			var y = 20 + Math.random() * 8; //文字在canvas上的y坐标
-			context.font = "bold 23px 微软雅黑";
+			var x = 10 + i * 20; //Text x-coordinate on canvas
+			var y = 20 + Math.random() * 8; //Text y-coordinate on canvas
+			context.font = "bold 23px Microsoft YaHei";
 
 			context.translate(x, y);
 			context.rotate(deg);
@@ -113,14 +113,14 @@
 			context.rotate(-deg);
 			context.translate(-x, -y);
 		}
-		for (var i = 0; i <= 5; i++) { //验证码上显示线条
+		for (var i = 0; i <= 5; i++) { //Draw lines on verification code
 			context.strokeStyle = randomColor();
 			context.beginPath();
 			context.moveTo(Math.random() * canvas_width, Math.random() * canvas_height);
 			context.lineTo(Math.random() * canvas_width, Math.random() * canvas_height);
 			context.stroke();
 		}
-		for (var i = 0; i <= 30; i++) { //验证码上显示小点
+		for (var i = 0; i <= 30; i++) { //Draw dots on verification code
 			context.strokeStyle = randomColor();
 			context.beginPath();
 			var x = Math.random() * canvas_width;
@@ -131,7 +131,7 @@
 		}
 	}
 
-	function randomColor() { //得到随机的颜色值
+	function randomColor() { //Get a random color
 		var r = Math.floor(Math.random() * 256);
 		var g = Math.floor(Math.random() * 256);
 		var b = Math.floor(Math.random() * 256);
