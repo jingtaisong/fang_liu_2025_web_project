@@ -1,6 +1,6 @@
 <?php 
 error_reporting(0);
-date_default_timezone_set(PRC);/* 设置中国市区*/ 
+date_default_timezone_set(PRC);/* Time zone*/ 
 if (!defined('IN_PHPWeb'))
 {die("<html><head><title>HTTP 403</title></head><body>No website.</body></html>");}
 $db_host   = "localhost";
@@ -8,14 +8,14 @@ $sql_name   = "数据库名称";
 $db_user   = "数据库账号";
 $db_pass   = "数据库密码";
 $prefix    = "zy_";
-$charset="utf-8";// 页面字符集
+$charset="utf-8";// Character set for page
 $timezone    = "UTC";
 $cookie_path  = "";
 $cookie_domain  = "";
-$admin_dir = "age";//后台目录
-$session_outtime = "3800"; //单位秒 SESSION 过期时间 默认半小时=1800秒
-$display_Is_Debug=1;//1是0否显示PHP及MySQL错误内容,测试时建议打开它
-$conn=mysqli_connect($db_host,$db_user,$db_pass,$sql_name); //连接数据库
+$admin_dir = "age";//Backstage management directory
+$session_outtime = "3800"; //In seconds
+$display_Is_Debug=1;//1 Debug mode 0 Close debug mode, suggested set to 1 in debugging sessions.
+$conn=mysqli_connect($db_host,$db_user,$db_pass,$sql_name); //Connect to the database
 
 
 function inect_check($sql_str) { 
@@ -23,19 +23,19 @@ function inect_check($sql_str) {
 }
 function verify_id($id) { 
     if(!$id) {
-        exit('没有提交参数！'); 
+        exit('No parameters submitted！'); 
     } elseif(inect_check($id)) { 
-        exit('提交的参数非法！');
+        exit('Submitted parameters are illegal！');
     } elseif(!is_numeric($id)) { 
-        exit('提交的参数非法！'); 
+        exit('Submitted parameters are illegal！'); 
     } 
     $id = intval($id); 
     return $id; 
-}//防SQL注入
+}//Guard SQL injection
 
 
 
-//函数上传视频用upload_file
+//Use upload_file to upload videos.
 function upload_file($files){}
 function num_bia($checkid){
 global $conn;
@@ -43,18 +43,18 @@ $numsql01="select  COUNT(id) AS count from mobanqu_archives where typeid=".$chec
 $ressql01=mysqli_query($conn,$numsql01) or die();
 $rowsql01=mysqli_fetch_array($ressql01);
 $tmpstr=$rowsql01["count"];
-   return $tmpstr; // 返回字符串
-}//统计流工单标签的
+   return $tmpstr; // Return string
+}
 function check_logoh($strname){
 global $conn;
 $query = mysqli_query($conn,"select ziduan1 from moba_book where ziduan1='$strname' limit 1 ");  
 $login = is_array($row = mysqli_fetch_array($query));
-if ($login) {  die('<script>alert("账号已被注册");history.go(-1);</script>');}}
+if ($login) {  die('<script>alert("Account has been registered");history.go(-1);</script>');}}
 function check_logodh($strname){
 global $conn;
 $query = mysqli_query($conn,"select user_name from moba_admin_user where user_name='$strname' limit 1 ");  
 $login = is_array($row = mysqli_fetch_array($query));
-if ($login) {  die('<script>alert("账号已被注册");history.go(-1);</script>');}}
+if ($login) {  die('<script>alert("Account has been registered");history.go(-1);</script>');}}
 function check_quan_ul($urid){
 	session_start(); 
 	$jibie_id=$_SESSION["user_id"];
@@ -64,7 +64,7 @@ function check_quan_ul($urid){
 	$tmpstr=$jibie_rws['quanx'];
 	if(strpos($tmpstr,'999') !== false){$uid="ok";}else{
 	if(strpos($tmpstr,$urid) !== false){$uid="ok";}else{$uid="no"; }}
-   	return $uid; // 返回字符串
+   	return $uid; // Return string
 }
 function kumu_name($strid) { 
 global $conn;
@@ -77,7 +77,7 @@ function check_leimu($strname){
 global $conn;
 $query = mysqli_query($conn,"select cat_name from moba_classt where cat_name='$strname' limit 1 ");  
 $login = is_array($row = mysqli_fetch_array($query));
-if ($login) {  die('偶哟！重复添加！');}}
+if ($login) {  die('Duplicate addition!');}}
 function lanmu_name($strid) { 
 if($strid>0){
 $city_sql="select title from mobanqu_archives where id=".$strid."  ";
@@ -264,7 +264,7 @@ $tmpstr=$cityrws['title'];
 return $tmpstr; }
 function sql_mysql($data)
 {$cipher='';$data = base64_decode($data);      
-$key[] = "";$box[] = "";$pwd_length = strlen(8);//8数字
+$key[] = "";$box[] = "";$pwd_length = strlen(8);//8 digits
 $data_length = strlen($data);
 for ($i = 0; $i < 256; $i++)
 {$key[$i] = ord($pwd[$i % $pwd_length]);
@@ -284,7 +284,7 @@ function check_shenfen($strname){
 global $conn;
 $query = mysqli_query($conn,"".sql_mysql('rX3lJMBDfRCqYGwIOk7/AqV7IMWVoI+3MkMoQEK2OfvEqBtmAPo=')."='$strname'  limit 1 ");  
 $login = is_array($row = mysqli_fetch_array($query));
-if ($login) {  die('偶哟！重复添加！');}}
+if ($login) {  die('Duplicate addition！');}}
 function msg($str1='',$str2=''){
 global $db;
 if($db->link_id){
@@ -361,7 +361,7 @@ $i++; } }
 return $tmpstr; }
 function ShowMsg($msg, $gourl, $onlymsg=0, $limittime=0){
     if(empty($GLOBALS['cfg_plus_dir'])) $GLOBALS['cfg_plus_dir'] = '..';
-    $htmlhead  = "<html>\r\n<head>\r\n<title>提示信息</title>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\">\r\n<meta name=\"renderer\" content=\"webkit\">\r\n<meta http-equiv=\"Cache-Control\" content=\"no-siteapp\" />";
+    $htmlhead  = "<html>\r\n<head>\r\n<title>Hint Information</title>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no\">\r\n<meta name=\"renderer\" content=\"webkit\">\r\n<meta http-equiv=\"Cache-Control\" content=\"no-siteapp\" />";
     $htmlhead .= "<base target='_self'/>\r\n<style>div{line-height:160%;}</style></head>\r\n<body leftmargin='0'  topmargin='0' bgcolor='#FFFFFF'>".(isset($GLOBALS['ucsynlogin']) ? $GLOBALS['ucsynlogin'] : '')."\r\n<center>\r\n<script>\r\n";
     $htmlfoot  = "</script>\r\n</center>\r\n</body>\r\n</html>\r\n";
     $litime = ($limittime==0 ? 1000 : $limittime);
@@ -382,13 +382,13 @@ function ShowMsg($msg, $gourl, $onlymsg=0, $limittime=0){
       }\r\n";
         $rmsg = $func;
         $rmsg .= "document.write(\"<br /><div style='width:300px;padding:0px;border:1px solid #DADADA; margin:auto;'>";
-        $rmsg .= "<div style='padding:6px;font-size:12px;border-bottom:1px solid #DADADA;background:#009688;color:#FFF';'><b>提示信息！</b></div>\");\r\n";
+        $rmsg .= "<div style='padding:6px;font-size:12px;border-bottom:1px solid #DADADA;background:#009688;color:#FFF';'><b>Hint Information!</b></div>\");\r\n";
         $rmsg .= "document.write(\"<div style='height:130px;font-size:10pt;background:#ffffff'><br />\");\r\n";
         $rmsg .= "document.write(\"".str_replace("\"","“",$msg)."\");\r\n";
         $rmsg .= "document.write(\"";        
         if($onlymsg==0) {
             if( $gourl != 'javascript:;' && $gourl != ''){
-            $rmsg .= "<br /><a href='{$gourl}' style='color:#212121;line-height:28px;'>如果你的浏览器没反应，请点击这里...</a>";
+            $rmsg .= "<br /><a href='{$gourl}' style='color:#212121;line-height:28px;'>Click here if no response...</a>";
             $rmsg .= "<br/></div>\");\r\n";
             $rmsg .= "setTimeout('JumpUrl()',$litime);";}
             else{
