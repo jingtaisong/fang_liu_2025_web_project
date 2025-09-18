@@ -16,7 +16,7 @@ include("./zy_quanxian.php");
 <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
 <script src="./lib/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/xadmin.js"></script>
-<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!-- Allow IE8/9 to support media queries, making it compatible with grid systems -->
 <!--[if lt IE 9]>
   <script src="./js/html5.min.js"></script>
   <script src="./js/respond.min.js"></script>
@@ -26,7 +26,7 @@ var is_remember = false;
 </script>
 </head>
 <body class="index">
-<!-- 顶部开始 -->
+<!-- Header starts -->
 <div class="container">
 <div class="logo">
 <a>Management Center</a></div>
@@ -44,9 +44,9 @@ var is_remember = false;
 </li>
 </ul>
 </div>
-<!-- 顶部结束 -->
-<!-- 中部开始 -->
-<!-- 左侧菜单开始 -->
+<!-- Header ends -->
+<!-- Middle begins -->
+<!-- Left menu starts -->
 <div class="left-nav ">
 <div id="side-nav">
 <ul id="nav">
@@ -174,7 +174,7 @@ var is_remember = false;
 </div>
 <div class="page-content-bg"></div>
 <style id="theme_style"></style>
-<!-- 右侧主体结束 -->
-<!-- 中部结束 -->
+<!-- Right main body ends -->
+<!-- Middle ends -->
 </body>
 </html>
