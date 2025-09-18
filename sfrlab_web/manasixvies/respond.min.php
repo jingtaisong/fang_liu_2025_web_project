@@ -7,7 +7,7 @@ function() {
 $ = layui.jquery;
 var form = layui.form,
 layer = layui.layer;
-layer.alert('执行成功', {icon:6},
+layer.alert('Execution success!', {icon:6},
 function() {
 xadmin.close(); 
 xadmin.father_reload();
