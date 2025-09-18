@@ -17,7 +17,7 @@ $titlet=$rows['title'];$body=$rows['body'];$bodyy=$rows['bodyy'];$litpic=$rows['
 $pic1=$rows['pic1'];$pic2=$rows['pic2'];$pic3=$rows['pic31'];$pic4=$rows['pic4'];$pic5=$rows['pic5'];
 $shorttitle=$rows['shorttitle'];$keywords=$rows['keywords'];$description=$rows['description'];$pubdate=$rows['pubdate'];$idd=$rows['id'];
 $ftitle=$rows['ftitle'];$writer=$rows['writer'];$product_album=$rows['product_album'];
-if($titlet==""){ exit('提交的参数非法！');die();}
+if($titlet==""){ exit('Invalid argument！');die();}
 if($shorttitle==""){$shorttitle=$web_titlel;}
 
 $result=mysqli_query($conn,"select * from mobanqu_archives where  typeid  =6 and ismake=1 order by paixu asc,id desc ")or die();
