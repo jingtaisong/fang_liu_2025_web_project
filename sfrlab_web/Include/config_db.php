@@ -4,9 +4,9 @@ date_default_timezone_set(PRC);/* Time zone*/
 if (!defined('IN_PHPWeb'))
 {die("<html><head><title>HTTP 403</title></head><body>No website.</body></html>");}
 $db_host   = "localhost";
-$sql_name   = "数据库名称";
-$db_user   = "数据库账号";
-$db_pass   = "数据库密码";
+$sql_name   = "Database name";
+$db_user   = "Database username";
+$db_pass   = "Database password";
 $prefix    = "zy_";
 $charset="utf-8";// Character set for page
 $timezone    = "UTC";
