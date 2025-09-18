@@ -1,13 +1,13 @@
 <?php
 /**
- * 上传附件和上传视频
+ * Upload attachments and videos
  * User: Jinqn
  * Date: 14-04-09
- * Time: 上午10:17
+ * Time: 10:17
  */
 include "Uploader.class.php";
 
-/* 上传配置 */
+/* Upload configuration */
 $base64 = "upload";
 switch (htmlspecialchars($_GET['action'])) {
     case 'uploadimage':
@@ -47,20 +47,20 @@ switch (htmlspecialchars($_GET['action'])) {
         break;
 }
 
-/* 生成上传实例对象并完成上传 */
+/* Generate upload instance and complete upload */
 $up = new Uploader($fieldName, $config, $base64);
 
 /**
- * 得到上传文件所对应的各个参数,数组结构
+ * Get the parameters corresponding to the uploaded file, array structure
  * array(
- *     "state" => "",          //上传状态，上传成功时必须返回"SUCCESS"
- *     "url" => "",            //返回的地址
- *     "title" => "",          //新文件名
- *     "original" => "",       //原始文件名
- *     "type" => ""            //文件类型
- *     "size" => "",           //文件大小
+ *     "state" => "",          // Upload status, must return "SUCCESS" when upload is successful
+ *     "url" => "",            // Returned address
+ *     "title" => "",          // New file name
+ *     "original" => "",       // Original file name
+ *     "type" => ""            // File type
+ *     "size" => "",           // File size
  * )
  */
 
-/* 返回数据 */
+/* Return data */
 return json_encode($up->getFileInfo());
