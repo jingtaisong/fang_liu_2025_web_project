@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="./css/xadmin.css">
 <script type="text/javascript" src="./lib/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="./js/xadmin.js"></script>
-<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!-- Enable media queries in IE8/9 to support grid system -->
 <!--[if lt IE 9]>
   <script src="./js/html5.min.js"></script>
   <script src="./js/respond.min.js"></script>
@@ -36,7 +36,7 @@ $pubdate=strtotime(date('Y-m-d H:i:s',strtotime('-5 day')));
 if($_REQUEST['act']=="edit"){
 $m_id=isset($_GET['id']) ? trim($_GET['id']) : '';
 if(empty($m_id)){
-echo('<script>alert("空置！点击此处");history.go(-1);</script>');}
+echo('<script>alert("Empty! Click here");history.go(-1);</script>');}
 else{
 $result = mysqli_query($conn,"select * from mobanqu_archives where id='$m_id' ")or die();
 $data6 = mysqli_fetch_array($result);  
@@ -162,7 +162,7 @@ while($home_list02=mysqli_fetch_array($resultd)){
     <a class="layui-btn layui-btn-danger layui-btn-sm layui-btn-smm" onClick="delpic3()"><i class="layui-icon"></i></a>
     <?php }else{?><a class="layui-btn layui-btn-danger layui-btn-sm layui-btn-smm" onClick="delpic03()"><i class="layui-icon"></i></a><?php }?>    
     </div>
-    <?php }//小图?>
+    <?php }//small image?>
 </div>
 
 <?php if(ispicsmall_c($leiid) <2 ){?>
@@ -313,7 +313,7 @@ while($home_list02=mysqli_fetch_array($resultd)){
     
 </div>
 
-<!--小图结束-->
+<!--small image ends-->
 <?php }?>
 
 
@@ -422,13 +422,13 @@ while($ow_ziduan=mysqli_fetch_assoc($result)){?>
 </div>
 </div>
       <link rel="stylesheet" href="jss/bootstrap/css/bootstrap.min.css" />
-      <!-- jQuery文件。务必在bootstrap.min.js 之前引入 --> 
+      <!-- jQuery file. Must be included before bootstrap.min.js -->
       <script src="jss/jquery.js"></script> 
-      <!-- 最新的 Bootstrap 核心 JavaScript 文件 --> 
+      <!-- Latest Bootstrap core JavaScript file -->
       <script src="jss/bootstrap/js/bootstrap.min.js"></script> 
       <script type="text/javascript" src="jss/plupload/plupload.full.min.js"></script> 
       <script type="text/javascript" src="jss/uploads.js"></script> 
-      <!-- 以下是统计及其他信息，与演示无关，不必理会 --> 
+      <!-- The following is statistical and other information, not relevant to the demo, no need to pay attention -->
 
 <?php }?>
 
@@ -475,9 +475,10 @@ while($ow_ziduan=mysqli_fetch_assoc($result)){?>
         function() {
             var laydate = layui.laydate;
 
-            //执行一个laydate实例
+            //Execute a laydate instance
             laydate.render({
-                elem: '#start', //指定元素
+              elem: '#start', //Specify element
+              type:'datetime'
 				type:'datetime'
             });
         });
@@ -489,11 +490,11 @@ function() {
 $ = layui.jquery;
 var form = layui.form,
 layer = layui.layer;
-//自定义验证规则
+//Custom validation rules
 form.verify({
 title: function(value) {
 if (value.length < 1) {
-return '名称至少得有个字符啊';
+return 'Title must have at least one character';
 }}});
 form.on('submit(add)');});
 </script>

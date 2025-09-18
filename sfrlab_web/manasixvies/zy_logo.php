@@ -100,9 +100,9 @@
 			var deg = Math.random() * 30 * Math.PI / 180; //Generate random radian between 0~30
 			var txt = aCode[j]; //Get random content
 			show_num[i] = txt.toLowerCase();
-			var x = 10 + i * 20; //Text x-coordinate on canvas
-			var y = 20 + Math.random() * 8; //Text y-coordinate on canvas
-			context.font = "bold 23px Microsoft YaHei";
+			var x = 10 + i * 20; //The x coordinate of the text on the canvas
+			var y = 20 + Math.random() * 8; //The y coordinate of the text on the canvas
+			context.font = "bold 23px 微软雅黑";
 
 			context.translate(x, y);
 			context.rotate(deg);
