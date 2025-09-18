@@ -26,7 +26,7 @@ $rows=mysqli_fetch_array($result);
 $cid=$rows['cat_id'];
 $name=$rows['cat_name'];
 $body=$rows['body'];}
-if($cid==""){ exit('提交的参数非法！');die();}
+if($cid==""){ exit('Invalid arguments!');die();}
 
 include 'template/teaching.html';
 }//end
