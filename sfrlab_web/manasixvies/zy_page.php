@@ -152,7 +152,7 @@ $sql="select * from  mobanqu_archives  where typeid =".$leiid." and  title LIKE 
 $sql="select * from  mobanqu_archives  where  typeid in(".$yilei.") and  title LIKE '%$keywords%'  order by paixu,id desc";}
 $query = mysqli_query($conn,$sql)or die();
 $count=mysqli_num_rows($query); 
-$pages = new PageClass($count,10,$_GET['page'],'?page={page}&leiid='.$leiid.'');//分别为(记录总数,每页显示多少条记录,当前面,显示方式)
+$pages = new PageClass($count, 10, $_GET['page'], '?page={page}&leiid='.$leiid.''); // Parameters: (total records, records per page, current page, display format)
 $sql .= " LIMIT ".$pages -> page_limit.",".$pages -> myde_size;
 $result=mysqli_query($conn,$sql)or die();
 while($row=mysqli_fetch_array($result)){

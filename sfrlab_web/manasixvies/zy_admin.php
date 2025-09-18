@@ -20,5 +20,5 @@ $sql="delete from moba_admin_user where user_id=".$user_id."";
 mysqli_query($conn,$sql);
 ShowMsg("Delete command executed successfully","zy_admin.php");}
 }
-include("./zy_close.php"); // close
+include("./zy_close.php");///close
 ?>

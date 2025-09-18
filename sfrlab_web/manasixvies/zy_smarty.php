@@ -1,9 +1,9 @@
 ﻿<?php
-include("../Include/config_db.php");//链接数据库
-include("../Smar/Smarty.class.php");//这里的Smarty.class.php必须添上路径，否则无法执
+include("../Include/config_db.php");//Connect to database
+include("../Smar/Smarty.class.php");// Load Smarty. The path of Smarty.class.php must be added, otherwise it cannot be executed.
 $smarty = new Smarty; 
-//下面的(你的网站目录)用绝对路径，比如d:/intepub/wwwroot
-$smarty->template_dir = './templates';//模板
+//Use absolute path below, for example d:/intepub/wwwroot
+$smarty->template_dir = './templates';//templates
 $smarty->config_dir = './configs';
 $smarty->cache_dir = './templates_c';
 $smarty->compile_dir = './templates_c';
