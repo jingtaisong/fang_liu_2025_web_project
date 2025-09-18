@@ -1,25 +1,25 @@
 <?php
 /**
- *-------------------------翻页类----------------------*
+ *-------------------------Page Class----------------------*
  */
 class PageClass
 {
-    private $myde_count;       // 总记录数
-    var $myde_size;            // 每页记录数
-    private $myde_page;        // 当前页
-    private $myde_page_count;  // 总页数
-    private $page_url;         // 页面 URL
-    private $page_i;           // 起始页
-    private $page_ub;          // 结束页
+    private $myde_count;       // Total record count
+    var $myde_size;            // Records per page
+    private $myde_page;        // Current page
+    private $myde_page_count;  // Total pages
+    private $page_url;         // Page URL
+    private $page_i;           // Start page
+    private $page_ub;          // End page
     var $page_limit;
 
     /**
-     * 构造函数
+     * Constructor
      *
-     * @param int $myde_count 总记录数
-     * @param int $myde_size 每页记录数
-     * @param int $myde_page 当前页
-     * @param string $page_url 页面 URL
+     * @param int $myde_count Total record count
+     * @param int $myde_size Records per page
+     * @param int $myde_page Current page
+     * @param string $page_url Page URL
      */
     function __construct($myde_count = 0, $myde_size = 1, $myde_page = 1, $page_url)
     {
@@ -57,15 +57,15 @@ class PageClass
     }
 
     /**
-     * 判断是否为数字
+     * Check if the value is numeric
      *
-     * @param mixed $id 输入值
-     * @return int 返回合法的数字
+     * @param mixed $id Input value
+     * @return int Returns a valid number
      */
     private function numeric($id)
     {
         if (strlen($id)) {
-            if (!preg_match("/^[0-9]+$/", $id)) { // 替换 ereg() 为 preg_match()
+            if (!preg_match("/^[0-9]+$/", $id)) { // Replace ereg() with preg_match()
                 $id = 1;
             } else {
                 $id = substr($id, 0, 11);
@@ -77,10 +77,10 @@ class PageClass
     }
 
     /**
-     * 地址替换
+     * Page URL replacement
      *
-     * @param int $page 页码
-     * @return string 替换后的 URL
+     * @param int $page Page number
+     * @return string Replaced URL
      */
     private function page_replace($page)
     {
@@ -88,9 +88,9 @@ class PageClass
     }
 
     /**
-     * 首页链接
+     * First page link
      *
-     * @return string 首页 HTML
+     * @return string First page HTML
      */
     private function myde_home()
     {
@@ -102,9 +102,9 @@ class PageClass
     }
 
     /**
-     * 上一页链接
+     * Previous page link
      *
-     * @return string 上一页 HTML
+     * @return string Previous page HTML
      */
     private function myde_prev()
     {
@@ -116,9 +116,9 @@ class PageClass
     }
 
     /**
-     * 下一页链接
+     * Next page link
      *
-     * @return string 下一页 HTML
+     * @return string Next page HTML
      */
     private function myde_next()
     {
@@ -130,9 +130,9 @@ class PageClass
     }
 
     /**
-     * 尾页链接
+     * Last page link
      *
-     * @return string 尾页 HTML
+     * @return string Last page HTML
      */
     private function myde_last()
     {
@@ -144,10 +144,10 @@ class PageClass
     }
 
     /**
-     * 输出分页 HTML
+     * Output pagination HTML
      *
-     * @param string $id 分页容器 ID
-     * @return string 分页 HTML
+     * @param string $id Pagination container ID
+     * @return string Pagination HTML
      */
     function myde_write($id = 'page')
     {
@@ -178,9 +178,9 @@ class PageClass
         return $str;
     }
 }
-/*-------------------------实例--------------------------------*
-$page = new PageClass(1000, 5, $_GET['page'], '?page={page}'); // 用于动态
-$page = new PageClass(1000, 5, $_GET['page'], 'list-{page}.html'); // 用于静态或者伪静态
-$page->myde_write(); // 显示
+/*-------------------------A real example--------------------------------*
+$page = new PageClass(1000, 5, $_GET['page'], '?page={page}'); // For dynamic
+$page = new PageClass(1000, 5, $_GET['page'], 'list-{page}.html'); // For static or pseudo-static
+$page->myde_write(); // Display
 */
 ?>
