@@ -1,8 +1,8 @@
 <?php
 $action = isset($_GET['action']) ? $_GET['action'] : "";
-$typeArr = array("jpg", "png", "gif", "jpeg", "zip", "mp4"); //允许上传文件格式
+$typeArr = array("jpg", "png", "gif", "jpeg", "zip", "mp4"); //Allowed file type
 
-$path = "../upload/Drface/"; //上传路径
+$path = "../upload/Drface/"; //The path to uploaded the file
 
 if ($action == 'upload') {
 	
@@ -11,42 +11,42 @@ if ($action == 'upload') {
         $size = $_FILES['file']['size'];
         $name_tmp = $_FILES['file']['tmp_name'];
         if (empty($name)) {
-            echo json_encode(array("error" => "您还未选择图片"));
+            echo json_encode(array("error" => "You did not choose a file to upload!"));
             exit;
         }
-        $type = strtolower(substr(strrchr($name, '.'), 1)); //获取文件类型
+        $type = strtolower(substr(strrchr($name, '.'), 1)); //Allowed file type
         if (!in_array($type, $typeArr)) {
-            echo json_encode(array("error" => "请上传jpg,png或gif类型的图片！"));
+            echo json_encode(array("error" => "Please upload a jpg, png, or gif image!"));
             exit;
         }
-        if ($size > (50000 * 1024)) { //上传大小
-            echo json_encode(array("error" => "图片大小已超过50000KB！"));
+        if ($size > (50000 * 1024)) { //Upload size
+            echo json_encode(array("error" => "The image size exceeds 50000KB!"));
             exit;
         }
 
-        $pic_name = time() . rand(10000, 99999) . "." . $type; //图片名称
-        $pic_url = $path . $pic_name; //上传后图片路径+名称
-        if (move_uploaded_file($name_tmp, $pic_url)) { //临时文件转移到目标文件夹
+        $pic_name = time() . rand(10000, 99999) . "." . $type; //Image name
+        $pic_url = $path . $pic_name; //Uploaded image path + name
+        if (move_uploaded_file($name_tmp, $pic_url)) { //Move temporary file to target folder
             echo json_encode(array("error" => "0", "src" => $pic_url, "name" => $pic_name));
         } else {
-            echo json_encode(array("error" => "上传有误，请检查服务器配置！"));
+            echo json_encode(array("error" => "Upload error, please check server configuration!"));
         }
     }
 } elseif ($action == 'getPicUrl') {
     $pic_url = $_POST['pic_url'];
 
-    $type = strtolower(substr(strrchr($pic_url, '.'), 1)); //获取文件类型
+    $type = strtolower(substr(strrchr($pic_url, '.'), 1)); //Get file type
     if (!in_array($type, $typeArr)) {
-        echo json_encode(array("error" => "请上传jpg,png或gif类型的图片！"));
+        echo json_encode(array("error" => "Please upload a jpg, png, or gif image!"));
         exit;
     }
     if (@fopen($pic_url, 'r')) {
-        $pic_name = $path.time() . rand(10000, 99999) . "." . $type; //图片名称
+        $pic_name = $path.time() . rand(10000, 99999) . "." . $type; //Image name
 
         file_put_contents($pic_name, file_get_contents($pic_url));
         echo json_encode(array("error" => "0", "src" => $pic_name));
     } else {
-        echo json_encode(array("error" => "文件不存在"));
+        echo json_encode(array("error" => "File does not exist"));
         exit;
     }
 }
