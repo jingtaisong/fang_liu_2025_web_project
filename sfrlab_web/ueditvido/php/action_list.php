@@ -1,21 +1,21 @@
 <?php
 /**
- * 获取已上传的文件列表
+ * Get the list of uploaded files
  * User: Jinqn
  * Date: 14-04-09
- * Time: 上午10:17
+ * Time: 10:17
  */
 include "Uploader.class.php";
 
-/* 判断类型 */
+/* Determine type */
 switch ($_GET['action']) {
-    /* 列出文件 */
+    /* List files */
     case 'listfile':
         $allowFiles = $CONFIG['fileManagerAllowFiles'];
         $listSize = $CONFIG['fileManagerListSize'];
         $path = $CONFIG['fileManagerListPath'];
         break;
-    /* 列出图片 */
+    /* List images */
     case 'listimage':
     default:
         $allowFiles = $CONFIG['imageManagerAllowFiles'];
@@ -24,12 +24,12 @@ switch ($_GET['action']) {
 }
 $allowFiles = substr(str_replace(".", "|", join("", $allowFiles)), 1);
 
-/* 获取参数 */
+/* Get parameters */
 $size = isset($_GET['size']) ? htmlspecialchars($_GET['size']) : $listSize;
 $start = isset($_GET['start']) ? htmlspecialchars($_GET['start']) : 0;
 $end = $start + $size;
 
-/* 获取文件列表 */
+/* Get file list */
 $path = $_SERVER['DOCUMENT_ROOT'] . (substr($path, 0, 1) == "/" ? "":"/") . $path;
 $files = getfiles($path, $allowFiles);
 if (!count($files)) {
@@ -41,17 +41,17 @@ if (!count($files)) {
     ));
 }
 
-/* 获取指定范围的列表 */
+/* Get specified range list */
 $len = count($files);
 for ($i = min($end, $len) - 1, $list = array(); $i < $len && $i >= 0 && $i >= $start; $i--){
     $list[] = $files[$i];
 }
-//倒序
+// Reverse order
 //for ($i = $end, $list = array(); $i < $len && $i < $end; $i++){
 //    $list[] = $files[$i];
 //}
 
-/* 返回数据 */
+/* Return data */
 $result = json_encode(array(
     "state" => "SUCCESS",
     "list" => $list,
@@ -63,7 +63,7 @@ return $result;
 
 
 /**
- * 遍历获取目录下的指定类型的文件
+ * Get files of specified type in a directory
  * @param $path
  * @param array $files
  * @return array
