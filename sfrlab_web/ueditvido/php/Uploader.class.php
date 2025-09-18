@@ -4,24 +4,24 @@
  * Created by JetBrains PhpStorm.
  * User: taoqili
  * Date: 12-7-18
- * Time: 上午11: 32
- * UEditor编辑器通用上传类
+ * Time: 11:32
+ * UEditor Editor Universal Upload Class
  */
 class Uploader
 {
-    private $fileField; //文件域名
-    private $file; //文件上传对象
-    private $base64; //文件上传对象
-    private $config; //配置信息
-    private $oriName; //原始文件名
-    private $fileName; //新文件名
-    private $fullName; //完整文件名,即从当前配置目录开始的URL
-    private $filePath; //完整文件名,即从当前配置目录开始的URL
-    private $fileSize; //文件大小
-    private $fileType; //文件类型
-    private $stateInfo; //上传状态信息,
-    private $stateMap = array( //上传状态映射表，国际化用户需考虑此处数据的国际化
-        "SUCCESS", //上传成功标记，在UEditor中内不可改变，否则flash判断会出错
+    private $fileField; // File field name
+    private $file; // File upload object
+    private $base64; // Base64 upload object
+    private $config; // Configuration information
+    private $oriName; // Original file name
+    private $fileName; // New file name
+    private $fullName; // Full file name, starting from the current configuration directory
+    private $filePath; // Full file name, starting from the current configuration directory
+    private $fileSize; // File size
+    private $fileType; // File type
+    private $stateInfo; // Upload state information
+    private $stateMap = array( //Upload status mapping table, internationalization users need to consider the internationalization of this data
+        "SUCCESS", //Upload success marker, cannot be changed within UEditor, otherwise flash judgment will error out
         "文件大小超出 upload_max_filesize 限制",
         "文件大小超出 MAX_FILE_SIZE 限制",
         "文件未被完整上传",
@@ -45,10 +45,10 @@ class Uploader
     );
 
     /**
-     * 构造函数
-     * @param string $fileField 表单名称
-     * @param array $config 配置项
-     * @param bool $base64 是否解析base64编码，可省略。若开启，则$fileField代表的是base64编码的字符串表单名
+     * Construct functions.
+    * @param string $fileField Form field name
+    * @param array $config Configuration items
+    * @param bool $base64 Whether to parse base64 encoding, optional. If enabled, $fileField represents the base64 encoded string form name
      */
     public function __construct($fileField, $config, $type = "upload")
     {
@@ -67,7 +67,7 @@ class Uploader
     }
 
     /**
-     * 上传文件的主处理方法
+    * Main processing method for uploading files
      * @return mixed
      */
     private function upFile()
@@ -96,19 +96,19 @@ class Uploader
         $this->fileName = $this->getFileName();
         $dirname = dirname($this->filePath);
 
-        //检查文件大小是否超出限制
+        //Check if file size exceeds limit
         if (!$this->checkSize()) {
             $this->stateInfo = $this->getStateInfo("ERROR_SIZE_EXCEED");
             return;
         }
 
-        //检查是否不允许的文件格式
+        //Check for disallowed file formats
         if (!$this->checkType()) {
             $this->stateInfo = $this->getStateInfo("ERROR_TYPE_NOT_ALLOWED");
             return;
         }
 
-        //创建目录失败
+        //Directory creation failed
         if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
             $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
             return;
@@ -117,16 +117,16 @@ class Uploader
             return;
         }
 
-        //移动文件
-        if (!(move_uploaded_file($file["tmp_name"], $this->filePath) && file_exists($this->filePath))) { //移动失败
+        //Move file
+        if (!(move_uploaded_file($file["tmp_name"], $this->filePath) && file_exists($this->filePath))) { //Move failed
             $this->stateInfo = $this->getStateInfo("ERROR_FILE_MOVE");
-        } else { //移动成功
+        } else { //Move succeeded
             $this->stateInfo = $this->stateMap[0];
         }
     }
 
     /**
-     * 处理base64编码的图片上传
+     * Process base64 encoded image upload
      * @return mixed
      */
     private function upBase64()
@@ -142,13 +142,13 @@ class Uploader
         $this->fileName = $this->getFileName();
         $dirname = dirname($this->filePath);
 
-        //检查文件大小是否超出限制
+        //Check if file size exceeds limit
         if (!$this->checkSize()) {
             $this->stateInfo = $this->getStateInfo("ERROR_SIZE_EXCEED");
             return;
         }
 
-        //创建目录失败
+        //Directory creation failed
         if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
             $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
             return;
@@ -157,17 +157,17 @@ class Uploader
             return;
         }
 
-        //移动文件
-        if (!(file_put_contents($this->filePath, $img) && file_exists($this->filePath))) { //移动失败
+        //Move file
+        if (!(file_put_contents($this->filePath, $img) && file_exists($this->filePath))) { //Move failed
             $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
-        } else { //移动成功
+        } else { //Move succeeded
             $this->stateInfo = $this->stateMap[0];
         }
 
     }
 
     /**
-     * 拉取远程图片
+     * Process remote image capture
      * @return mixed
      */
     private function saveRemote()
@@ -175,7 +175,7 @@ class Uploader
         $imgUrl = htmlspecialchars($this->fileField);
         $imgUrl = str_replace("&amp;", "&", $imgUrl);
 
-        //http开头验证
+        //Check begins with http
         if (strpos($imgUrl, "http") !== 0) {
             $this->stateInfo = $this->getStateInfo("ERROR_HTTP_LINK");
             return;
@@ -184,7 +184,7 @@ class Uploader
         preg_match('/(^https*:\/\/[^:\/]+)/', $imgUrl, $matches);
         $host_with_protocol = count($matches) > 1 ? $matches[1] : '';
 
-        // 判断是否是合法 url
+        // Check if valid URL
         if (!filter_var($host_with_protocol, FILTER_VALIDATE_URL)) {
             $this->stateInfo = $this->getStateInfo("INVALID_URL");
             return;
@@ -193,28 +193,28 @@ class Uploader
         preg_match('/^https*:\/\/(.+)/', $host_with_protocol, $matches);
         $host_without_protocol = count($matches) > 1 ? $matches[1] : '';
 
-        // 此时提取出来的可能是 ip 也有可能是域名，先获取 ip
+        // At this point, the extracted value could be either an IP or domain name, first get the IP
         $ip = gethostbyname($host_without_protocol);
-        // 判断是否是私有 ip
+        // Check if it's a private IP
         if(!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE)) {
             $this->stateInfo = $this->getStateInfo("INVALID_IP");
             return;
         }
 
-        //获取请求头并检测死链
+        // Get request headers and check dead links
         $heads = get_headers($imgUrl, 1);
         if (!(stristr($heads[0], "200") && stristr($heads[0], "OK"))) {
             $this->stateInfo = $this->getStateInfo("ERROR_DEAD_LINK");
             return;
         }
-        //格式验证(扩展名验证和Content-Type验证)
+        //Format validation (extension validation and Content-Type validation)
         $fileType = strtolower(strrchr($imgUrl, '.'));
         if (!in_array($fileType, $this->config['allowFiles']) || !isset($heads['Content-Type']) || !stristr($heads['Content-Type'], "image")) {
             $this->stateInfo = $this->getStateInfo("ERROR_HTTP_CONTENTTYPE");
             return;
         }
 
-        //打开输出缓冲区并获取远程图片
+        //Open output buffer and get remote image
         ob_start();
         $context = stream_context_create(
             array('http' => array(
@@ -234,13 +234,13 @@ class Uploader
         $this->fileName = $this->getFileName();
         $dirname = dirname($this->filePath);
 
-        //检查文件大小是否超出限制
+        //Check if file size exceeds limit
         if (!$this->checkSize()) {
             $this->stateInfo = $this->getStateInfo("ERROR_SIZE_EXCEED");
             return;
         }
 
-        //创建目录失败
+        //Directory creation failed
         if (!file_exists($dirname) && !mkdir($dirname, 0777, true)) {
             $this->stateInfo = $this->getStateInfo("ERROR_CREATE_DIR");
             return;
@@ -249,17 +249,17 @@ class Uploader
             return;
         }
 
-        //移动文件
-        if (!(file_put_contents($this->filePath, $img) && file_exists($this->filePath))) { //移动失败
+        //Move file
+        if (!(file_put_contents($this->filePath, $img) && file_exists($this->filePath))) { //Move failed
             $this->stateInfo = $this->getStateInfo("ERROR_WRITE_CONTENT");
-        } else { //移动成功
+        } else { // Move succeeded
             $this->stateInfo = $this->stateMap[0];
         }
 
     }
 
     /**
-     * 上传错误检查
+    * Upload error check
      * @param $errCode
      * @return string
      */
@@ -269,7 +269,7 @@ class Uploader
     }
 
     /**
-     * 获取文件扩展名
+    * Get file extension name
      * @return string
      */
     private function getFileExt()
@@ -278,12 +278,12 @@ class Uploader
     }
 
     /**
-     * 重命名文件
+    * Rename file
      * @return string
      */
     private function getFullName()
     {
-        //替换日期事件
+        //Replace date event
         $t = time();
         $d = explode('-', date("Y-y-m-d-H-i-s"));
         $format = $this->config["pathFormat"];
@@ -296,12 +296,12 @@ class Uploader
         $format = str_replace("{ss}", $d[6], $format);
         $format = str_replace("{time}", $t, $format);
 
-        //过滤文件名的非法自负,并替换文件名
+        //Filter illegal characters in filename and replace filename
         $oriName = substr($this->oriName, 0, strrpos($this->oriName, '.'));
         $oriName = preg_replace("/[\|\?\"\<\>\/\*\\\\]+/", '', $oriName);
         $format = str_replace("{filename}", $oriName, $format);
 
-        //替换随机字符串
+        //Replace random string
         $randNum = rand(1, 10000000000) . rand(1, 10000000000);
         if (preg_match("/\{rand\:([\d]*)\}/i", $format, $matches)) {
             $format = preg_replace("/\{rand\:[\d]*\}/i", substr($randNum, 0, $matches[1]), $format);
@@ -312,7 +312,7 @@ class Uploader
     }
 
     /**
-     * 获取文件名
+    * Get filename
      * @return string
      */
     private function getFileName () {
@@ -320,7 +320,7 @@ class Uploader
     }
 
     /**
-     * 获取文件完整路径
+    * Get complete file path
      * @return string
      */
     private function getFilePath()
@@ -336,7 +336,7 @@ class Uploader
     }
 
     /**
-     * 文件类型检测
+    * Check file type
      * @return bool
      */
     private function checkType()
@@ -345,7 +345,7 @@ class Uploader
     }
 
     /**
-     * 文件大小检测
+    * Check file size
      * @return bool
      */
     private function  checkSize()
@@ -354,7 +354,7 @@ class Uploader
     }
 
     /**
-     * 获取当前上传成功文件的各项信息
+    * Get various information about currently successfully uploaded files
      * @return array
      */
     public function getFileInfo()
