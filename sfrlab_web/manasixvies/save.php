@@ -1,6 +1,6 @@
 <?php
 define('IN_PHPWeb', true);
-include("../Include/config_db.php");//链接数据库
+include("../Include/config_db.php");//Connect to db
 include("./zy_quanxian.php");
 if($_GET['act']=="adminadd"){
 $user_name=isset($_POST['username']) ? trim($_POST['username']) : '';
@@ -63,8 +63,8 @@ mysqli_query($conn,$sql);
 include("./respond.min.php");}
 
 if($_GET['act']=="orderadd"){
-include('../Include/uploadfile1.php');//图片	
-include('./zy_clear.php');//图片
+include('../Include/uploadfile1.php');//image
+include('./zy_clear.php');//image
 $hid=trim($_POST['hid']);
 $ziduan2=trim($_POST['ziduan1']);
 $ziduan1=ziduan_name($ziduan2,'title','mobanqu_archives');
@@ -103,11 +103,11 @@ include("./respond.min.php");}
 
 if($_REQUEST['act']=="page_add"){
 $leiid=trim($_GET['leiid']);
-include('../Include/uploadfile1.php');//图片	
-include('./zy_clear.php');//图片
+include('../Include/uploadfile1.php');//image
+include('./zy_clear.php');//image
 
 
-//MP4视频
+//MP4 video
 $upfile = $_FILES['upfilepic'];
 
 $fileiinput=upload_file($upfile);//---
@@ -137,7 +137,7 @@ $ziduan.=",".$ow_ziduan['feldname'];
 $zhizd=$_POST[''.(string)$ow_ziduan['feldname'].''];
 $zhiz.=",".'"'.$zhizd.'"';}
 if( empty($title) ){
-echo('<script>alert("参数错误！点击此处");history.go(-1);</script>');}
+echo('<script>alert("Parameter error! Click here");history.go(-1);</script>');}
 else{if($zicheck){
 $sqq="insert into mobanqu_archives(typeid,title,writer,pubdate,litpic,keywords,description,body,ismake,shorttitle,product_album,pic1,pic2,pic3,pic4,pic5,vieo,bodyy,fileiinput".$ziduan.") values('$typeid','$title','$writer','$pubdate','$upfile1','$keywords','$description','$body','$ismake','$shorttitle','$product_album','$upfil3','$upfil4','$upfil5','$upfil6','$upfil7','$vieo','$bodyy','$fileiinput'".$zhiz.")";
 }else{
@@ -147,21 +147,21 @@ $result = mysqli_query($conn,$sqq)or die();
 include("./respond.min.php");
 mysql_close(); }
 }
-////提交iＤ先查询
+// Submit ID and query first
 
-/*修改提交判断*/
+/* Submit check */
 if($_REQUEST['act']=="page_edit"){
 $leiid=trim($_GET['leiid']);
-include('../Include/uploadfile1.php');//图片	
-include('./zy_clear.php');//图片
+include('../Include/uploadfile1.php');//image	
+include('./zy_clear.php');//image
 $m_id=isset($_GET['m_id']) ? trim($_GET['m_id']) : '0';
 
-////MP4视频
+////MP4 video
 $upfile = $_FILES['upfilepic'];
 $olupfilepic = $_POST['olupfilepic'];
 $gsdg=upload_file($upfile);
-if($leiid==144){//这里116 是需要上传视频的分类ID
-if($gsdg=="非法文件类型"){die('<script>alert("非法文件类型！点击此处");history.go(-1);</scr ipt>');}
+if($leiid==144){//116 is the category ID that needs to upload video
+if($gsdg=="非法文件类型"){die('<script>alert("Illegal file type! Click here");history.go(-1);</scr ipt>');}
 }
 if($gsdg=="文件上传失败"){$fileiinput=$olupfilepic;}else{$fileiinput=$gsdg;};	
 ////---
@@ -189,7 +189,7 @@ $ziduan=$ow_ziduan['feldname'];
 $zhiz=$_POST[''.(string)$ow_ziduan['feldname'].''];
 $update.="$ziduan='$zhiz'".",";}
 if(empty($m_id) ){
-echo('<script>alert("参数错误！点击此处");history.go(-1);</script>');}
+echo('<script>alert("Parameter error! Click here");history.go(-1);</script>');}
 else{if($zicheck){
 $result = mysqli_query($conn," update mobanqu_archives set  ".$update."typeid='$typeid',vieo='$vieo',bodyy='$bodyy',fileiinput='$fileiinput',title='$title',ismake='$ismake',writer='$writer',pubdate='$pubdate',product_album='$product_album',shorttitle='$shorttitle',litpic='$upfile1',keywords='$keywords',description='$description',body='$body',pic1='$upfil3',pic2='$upfil4',pic3='$upfil5',pic4='$upfil6',pic5='$upfil7' where id=$m_id ")or die();
 }else{
@@ -198,14 +198,14 @@ include("./respond.min.php");
 mysql_close(); }
 }
 if($_REQUEST['act']=="class_add"){
-include('../Include/uploadfile1.php');//图片	
-include('./zy_clear.php');//图片
+include('../Include/uploadfile1.php');//image
+include('./zy_clear.php');//image
 $cat_name=isset($_POST['cat_name']) ? trim($_POST['cat_name']) : '0';
 $body=isset($_POST['body']) ? trim($_POST['body']) : '0';
 $body1=isset($_POST['body1']) ? trim($_POST['body1']) : '0';
 $parent_id=isset($_POST['parent_id']) ? trim($_POST['parent_id']) : '0';
 if( empty($cat_name) ){
-echo('<script>alert("参数错误！点击此处");history.go(-1);</script>');
+echo('<script>alert("Parameter error! Click here");history.go(-1);</script>');
 }else{
 check_leimu($cat_name);
 $add_time=date('Y-m-d H:i:s',time());
@@ -215,17 +215,17 @@ include("./respond.min.php");
 mysql_close();}
 }
 
-/*修改提交判断*/
+/* Submit check */
 if($_REQUEST['act']=="class_edit"){
-include('../Include/uploadfile1.php');//图片	
-include('./zy_clear.php');//图片
+include('../Include/uploadfile1.php');//image
+include('./zy_clear.php');//image
 $cat_id=isset($_GET['cat_id']) ? trim($_GET['cat_id']) : '0';
 $body=isset($_POST['body']) ? trim($_POST['body']) : '0';
 $body1=isset($_POST['body1']) ? trim($_POST['body1']) : '0';
 $cat_name=isset($_POST['cat_name']) ? trim($_POST['cat_name']) : '0';
 $parent_id=isset($_POST['parent_id']) ? trim($_POST['parent_id']) : '0';
 if(empty($cat_id) ){
-echo('<script>alert("参数错误！点击此处");history.go(-1);</script>');}
+echo('<script>alert("Parameter error! Click here");history.go(-1);</script>');}
 else{
 $sql="update moba_classt set cat_name='$cat_name',body='$body',body1='$body1',litpic1='$upfile1',litpic2='$upfil3' where cat_id=$cat_id";
 mysqli_query($conn,$sql)or die();
