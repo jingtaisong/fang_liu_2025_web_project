@@ -1,6 +1,6 @@
 ﻿<?php
 define('IN_PHPWeb', true);
-include("./zy_smarty.php");//这里的Smarty.class.php必须添上路径，否则无法执行  //载入Smarty
+include("./zy_smarty.php");// Load Smarty. The path of Smarty.class.php must be added, otherwise it cannot be executed.
 include("./zy_quanxian.php");
 if (empty($_REQUEST['act'])){
 $_REQUEST['act'] = 'info';
@@ -24,5 +24,5 @@ $add_time=$rws['add_time'];
 $user_id=$rws['user_id'];}
 include 'templates/zy_admin_edit.html';
 }
-include("./zy_close.php");///关闭
+include("./zy_close.php");///close
 ?>
