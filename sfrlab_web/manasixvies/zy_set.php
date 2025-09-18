@@ -1,9 +1,9 @@
 <?php
 define('IN_PHPWeb', true);
-include("./zy_smarty.php");//这里的Smarty.class.php必须添上路径，否则无法执行  //载入Smarty
+include("./zy_smarty.php");// Load Smarty. The path of Smarty.class.php must be added, otherwise it cannot be executed.
 include("./zy_quanxian.php");
-include('../Include/uploadfile1.php');//图片
-include('./zy_clear.php');//图片
+include('../Include/uploadfile1.php');// image
+include('./zy_clear.php');// image
 if (empty($_REQUEST['act'])){
 $_REQUEST['act'] = 'edit';}else{
 $_REQUEST['act'] = trim($_REQUEST['act']);}
@@ -60,12 +60,12 @@ $we_gjzms12=$_POST['we_gjzms12'];
 $we_gjzms13=$_POST['we_gjzms13'];
 $checkd=$_POST['checkd'];
 if(empty($web_titlel) || empty($we_gjz) ){
-echo('<script>alert("参数错误！点击此处");history.go(-1);</script>');}
+echo('<script>alert("Parameter error! Click here");history.go(-1);</script>');}
 else{
 $sql="update moba_set set checkd='$checkd',web_name='$web_name',web_titlel='$web_titlel',wei_yejiao='$wei_yejiao',we_url='$we_url',we_gjzms='$we_gjzms',we_gjz='$we_gjz',m_fahuo='$m_fahuo',m_down='$m_down',goods_img='$upfile1',we_gjzms2='$we_gjzms2',we_gjzms3='$upfil3',we_gjzms4='$we_gjzms4',we_gjzms5='$we_gjzms5',we_gjzms6='$we_gjzms6',we_gjzms7='$upfil4',we_gjzms8='$we_gjzms8',we_gjzms9='$we_gjzms9',we_gjzms10='$we_gjzms10',we_gjzms11='$we_gjzms11',we_gjzms12='$we_gjzms12',we_gjzms13='$we_gjzms13' where we_id=1 ";
 
 mysqli_query($conn,$sql);
-ShowMsg("修改命令执行完毕","zy_set.php");}
+ShowMsg("Modification command completed","zy_set.php");}
 }
-include("./zy_close.php");///关闭
+include("./zy_close.php");///close
 ?>
