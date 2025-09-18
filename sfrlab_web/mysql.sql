@@ -2,10 +2,10 @@
 -- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- 主机： localhost
--- 生成日期： 2025-09-16 08:50:03
--- 服务器版本： 5.6.50-log
--- PHP 版本： 7.3.31
+-- Host: localhost
+-- Creation date: 2025-09-16 08:50:03
+-- Server version: 5.6.50-log
+-- PHP version: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 数据库： `bods065xin01`
+-- Database: `fang_lab_website_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `mobanqu_archives`
+-- Table structure for `mobanqu_archives`
 --
 
 CREATE TABLE `mobanqu_archives` (
@@ -68,7 +68,7 @@ CREATE TABLE `mobanqu_archives` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `mobanqu_archives`
+-- Dumping data for table `mobanqu_archives`
 --
 
 INSERT INTO `mobanqu_archives` (`id`, `typeid`, `ismake`, `channel`, `arcrank`, `title`, `shorttitle`, `writer`, `source`, `litpic`, `pubdate`, `senddate`, `mid`, `keywords`, `description`, `weight`, `body`, `boody`, `linkyurl`, `paixu`, `lanmuid`, `pic1`, `pic2`, `pic3`, `pic4`, `pic5`, `pic6`, `pic7`, `bodyy`, `vieo`, `fileiinput`, `hot`, `product_album`, `ftitle`, `ftitle1`, `ftitle2`) VALUES
@@ -135,7 +135,7 @@ INSERT INTO `mobanqu_archives` (`id`, `typeid`, `ismake`, `channel`, `arcrank`, 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `moba_admin_user`
+-- The structure of `moba_admin_user`
 --
 
 CREATE TABLE `moba_admin_user` (
@@ -162,7 +162,7 @@ CREATE TABLE `moba_admin_user` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `moba_admin_user`
+-- Dumping data for table `moba_admin_user`
 --
 
 INSERT INTO `moba_admin_user` (`user_id`, `user_name`, `email`, `password`, `add_time`, `last_login`, `last_ip`, `lanmuid`, `lanmuid1`, `lanmuid2`, `lanmuid3`, `lanmuid4`, `lanmuid5`, `lanmuid6`, `lanmuid7`, `lanmuid8`, `lanmuid9`, `lanmuid10`, `lanmuid11`, `lanmuid12`) VALUES
@@ -171,7 +171,7 @@ INSERT INTO `moba_admin_user` (`user_id`, `user_name`, `email`, `password`, `add
 -- --------------------------------------------------------
 
 --
--- 表的结构 `moba_book`
+-- The structure of `moba_book`
 --
 
 CREATE TABLE `moba_book` (
@@ -194,7 +194,7 @@ CREATE TABLE `moba_book` (
 -- --------------------------------------------------------
 
 --
--- 表的结构 `moba_classt`
+-- The structure of `moba_classt`
 --
 
 CREATE TABLE `moba_classt` (
@@ -218,7 +218,7 @@ CREATE TABLE `moba_classt` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `moba_classt`
+-- Dumping data for table `moba_classt`
 --
 
 INSERT INTO `moba_classt` (`cat_id`, `parent_id`, `paixu`, `cat_name`, `typedir`, `ispic`, `isclass`, `isabout`, `isshuju`, `ispicsmalll`, `content`, `body`, `body1`, `litpic1`, `litpic2`, `hot`, `datae`) VALUES
@@ -245,7 +245,7 @@ INSERT INTO `moba_classt` (`cat_id`, `parent_id`, `paixu`, `cat_name`, `typedir`
 -- --------------------------------------------------------
 
 --
--- 表的结构 `moba_feld`
+-- The structure of `moba_feld` 
 --
 
 CREATE TABLE `moba_feld` (
@@ -260,7 +260,7 @@ CREATE TABLE `moba_feld` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- 转存表中的数据 `moba_feld`
+-- Dumping data for table `moba_feld`
 --
 
 INSERT INTO `moba_feld` (`id`, `typeid`, `feldname`, `textname`, `remark`, `feldwidth`, `checked`, `paixu`) VALUES
@@ -276,7 +276,7 @@ INSERT INTO `moba_feld` (`id`, `typeid`, `feldname`, `textname`, `remark`, `feld
 -- --------------------------------------------------------
 
 --
--- 表的结构 `moba_set`
+-- The structure of `moba_set`
 --
 
 CREATE TABLE `moba_set` (
@@ -309,82 +309,81 @@ CREATE TABLE `moba_set` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `moba_set`
+-- Dumping data for table `moba_set`
 --
 
 INSERT INTO `moba_set` (`we_id`, `web_name`, `goods_img`, `web_titlel`, `we_con`, `we_gjz`, `we_gjzms`, `we_gjzms2`, `we_gjzms3`, `we_gjzms4`, `we_gjzms5`, `we_gjzms6`, `we_gjzms7`, `we_gjzms8`, `we_gjzms9`, `we_gjzms10`, `we_gjzms11`, `we_gjzms12`, `we_gjzms13`, `we_url`, `wei_yejiao`, `m_fahuo`, `m_down`, `we_youqlj1`, `we_ceshi`, `checkd`) VALUES
 (1, '', '../upload/202507281436271237.png', 'Fang Liu Group', NULL, 'Fang Liu Group', '© Copyright Fang Liu Group', 'Fang Liu Group', 'upload/202207250855435760.jpg', '', '', '', '../upload/20250413002634275.png', '', '', '', '', '', '', '', '', '', '', NULL, NULL, 1);
 
 --
--- 转储表的索引
+-- Dumping indexes for tables
 --
 
 --
--- 表的索引 `mobanqu_archives`
+-- Keys for `mobanqu_archives`
 --
 ALTER TABLE `mobanqu_archives`
   ADD PRIMARY KEY (`id`);
 
---
--- 表的索引 `moba_admin_user`
+-- Keys for `moba_admin_user`
 --
 ALTER TABLE `moba_admin_user`
   ADD PRIMARY KEY (`user_id`);
 
 --
--- 表的索引 `moba_book`
+-- Keys for `moba_book`
 --
 ALTER TABLE `moba_book`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `moba_classt`
+-- Keys for `moba_classt`
 --
 ALTER TABLE `moba_classt`
   ADD PRIMARY KEY (`cat_id`);
 
 --
--- 表的索引 `moba_feld`
+-- Keys for `moba_feld`
 --
 ALTER TABLE `moba_feld`
   ADD PRIMARY KEY (`id`);
 
 --
--- 表的索引 `moba_set`
+-- Keys for `moba_set`
 --
 ALTER TABLE `moba_set`
   ADD PRIMARY KEY (`we_id`);
 
 --
--- 在导出的表使用AUTO_INCREMENT
+-- AUTO_INCREMENT for exported tables
 --
 
 --
--- 使用表AUTO_INCREMENT `mobanqu_archives`
+-- Use AUTO_INCREMENT `mobanqu_archives`
 --
 ALTER TABLE `mobanqu_archives`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
--- 使用表AUTO_INCREMENT `moba_admin_user`
+-- Use AUTO_INCREMENT `moba_admin_user`
 --
 ALTER TABLE `moba_admin_user`
   MODIFY `user_id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- 使用表AUTO_INCREMENT `moba_book`
+-- Use AUTO_INCREMENT `moba_book`
 --
 ALTER TABLE `moba_book`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- 使用表AUTO_INCREMENT `moba_classt`
+-- Use AUTO_INCREMENT `moba_classt`
 --
 ALTER TABLE `moba_classt`
   MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- 使用表AUTO_INCREMENT `moba_feld`
+-- Use AUTO_INCREMENT `moba_feld`
 --
 ALTER TABLE `moba_feld`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
