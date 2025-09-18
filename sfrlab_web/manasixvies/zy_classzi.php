@@ -43,26 +43,26 @@ $cat_id =implode(",",$mm);}
 else{
 $cat_id=isset($_GET['cat_id']) ? trim($_GET['cat_id']) : '';};
 if (empty($cat_id)){
-echo('<script>alert("空值！点击此处");history.go(-1);</script>');}
+echo('<script>alert("Empty value! Click here");history.go(-1);</script>');}
 elseif($annin=="deled"){
 $sqsld = "select * from moba_classt where parent_id in(".$cat_id.")";
 $resd=mysqli_query($conn,$sqsld)or die();
 if($resu = mysqli_fetch_array($resd)){
-die('<script>alert("有子栏目，禁止选择顶级栏目");history.go(-1);</script>');
-};///有字分类不删除
+die('<script>alert("Has sub-categories, top-level categories cannot be selected");history.go(-1);</script>');
+};///cannot delete if it has subcategories
 $sql="delete from moba_classt where cat_id in(".$cat_id.")";
 mysqli_query($conn,$sql)or die();
-ShowMsg("删除命令执行完毕","zy_classzi.php?leiid=".$leiid."");
+ShowMsg("Delete command executed successfully","zy_classzi.php?leiid=".$leiid."");
 mysql_close();
 }elseif($annin=="paixu"){
 for($i=0,$size=count($paixu);$i<$size;$i++){
 $sql="update moba_classt set paixu='$paixu[$i]' where cat_id ='$mm[$i]'";
 mysqli_query($conn,$sql)or die();}
-ShowMsg("命令执行完毕","zy_classzi.php?leiid=".$leiid."");
+ShowMsg("Command executed successfully","zy_classzi.php?leiid=".$leiid."");
 mysql_close();}
 else{
-die('<script>alert("请点击选项");history.go(-1);</script>');}
+die('<script>alert("Please click an option");history.go(-1);</script>');}
 }
 /////////////
-include("./zy_close.php");///关闭
+include("./zy_close.php");///Close
 ?>
