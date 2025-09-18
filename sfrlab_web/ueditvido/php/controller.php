@@ -1,6 +1,6 @@
 <?php
-//header('Access-Control-Allow-Origin: http://www.baidu.com'); //设置http://www.baidu.com允许跨域访问
-//header('Access-Control-Allow-Headers: X-Requested-With,X_Requested_With'); //设置允许的跨域header
+//header('Access-Control-Allow-Origin: http://www.baidu.com'); //Allow cross-domain access from http://www.baidu.com
+//header('Access-Control-Allow-Headers: X-Requested-With,X_Requested_With'); //Set allowed cross-domain headers
 date_default_timezone_set("Asia/Chongqing");
 error_reporting(E_ERROR);
 header("Content-Type: text/html; charset=utf-8");
@@ -13,45 +13,45 @@ switch ($action) {
         $result =  json_encode($CONFIG);
         break;
 
-    /* 上传图片 */
+    /* Upload image */
     case 'uploadimage':
-    /* 上传涂鸦 */
+    /* Upload scrawl */
     case 'uploadscrawl':
-    /* 上传视频 */
+    /* Upload video */
     case 'uploadvideo':
-    /* 上传文件 */
+    /* Upload file */
     case 'uploadfile':
         $result = include("action_upload.php");
         break;
 
-    /* 列出图片 */
+    /* List images */
     case 'listimage':
         $result = include("action_list.php");
         break;
-    /* 列出文件 */
+    /* List files */
     case 'listfile':
         $result = include("action_list.php");
         break;
 
-    /* 抓取远程文件 */
+    /* Capture remote files */
     case 'catchimage':
         $result = include("action_crawler.php");
         break;
 
     default:
         $result = json_encode(array(
-            'state'=> '请求地址出错'
+            'state'=> 'Request URL error'
         ));
         break;
 }
 
-/* 输出结果 */
+/* Output result */
 if (isset($_GET["callback"])) {
     if (preg_match("/^[\w_]+$/", $_GET["callback"])) {
         echo htmlspecialchars($_GET["callback"]) . '(' . $result . ')';
     } else {
         echo json_encode(array(
-            'state'=> 'callback参数不合法'
+            'state'=> 'callback parameter is invalid'
         ));
     }
 } else {
