@@ -14,11 +14,11 @@ $smarty->display("zy_admin.html");}
 if($_REQUEST['act'] == 'del'){
 $user_id=isset($_GET['user_id']) ? trim($_GET['user_id']) : '';
 if (empty($user_id))
-{echo('<script>alert("空值！点击此处");history.go(-1);</script>');}
+{echo('<script>alert("Empty value! Click here");history.go(-1);</script>');}
 else{
 $sql="delete from moba_admin_user where user_id=".$user_id."";
 mysqli_query($conn,$sql);
-ShowMsg("删除命令执行完毕","zy_admin.php");}
+ShowMsg("Delete command executed successfully","zy_admin.php");}
 }
-include("./zy_close.php");///关闭
+include("./zy_close.php"); // close
 ?>
