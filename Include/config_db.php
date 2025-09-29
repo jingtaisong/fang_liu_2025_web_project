@@ -4,9 +4,9 @@ date_default_timezone_set(PRC);/* 设置中国市区*/
 if (!defined('IN_PHPWeb'))
 {die("<html><head><title>HTTP 403</title></head><body>No website.</body></html>");}
 $db_host   = "localhost";
-$sql_name   = "数据库名称";
-$db_user   = "数据库账号";
-$db_pass   = "数据库密码";
+$sql_name   = "fangliul_web";
+$db_user   = "fangliul_admin";
+$db_pass   = "shanghai5487";
 $prefix    = "zy_";
 $charset="utf-8";// 页面字符集
 $timezone    = "UTC";
