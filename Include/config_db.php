@@ -17,6 +17,12 @@ $session_outtime = "3800"; //单位秒 SESSION 过期时间 默认半小时=1800
 $display_Is_Debug=1;//1是0否显示PHP及MySQL错误内容,测试时建议打开它
 $conn=mysqli_connect($db_host,$db_user,$db_pass,$sql_name); //连接数据库
 
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+// Force the connection to use utf8mb4; This allows to parse subscript and acent characters properly.
+mysqli_set_charset($conn, "utf8mb4");
 
 function inect_check($sql_str) { 
     return preg_match('select|insert|and|or|update|delete|\'|\/\*|\*|\.\.\/|\.\/|union|into|load_file|outfile|\;|CREATE|ALTER|DROP|TRUNCATE', $sql_str);
